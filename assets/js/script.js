@@ -1,14 +1,14 @@
 workSchedule = [];
 workTime = [
-  "9:00Am",
-  "10:00Am",
-  "11:00Am",
-  "12:00Am",
-  "1:00PM",
-  "2:00PM",
-  "10:34PM",
-  "10:38PM",
-  "10:39PM",
+  "9:00 Am",
+  "10:00 Am",
+  "11:00 Am",
+  "12:00 Am",
+  "1:00 PM",
+  "2:00 PM",
+  "3:00 PM",
+  "4:00 PM",
+  "5:00 PM",
 ];
 //append current time to the paragraph
 currentDate = moment().format("dddd, MMMM Do");
@@ -23,10 +23,10 @@ function displaySchedule() {
     var timePlanDiv = $("<div>").addClass("row");
     var container = $(".container");
     var timeScheduleDiv = $("<div>").addClass(
-      "col-4 col-sm-3 col-md-2 col-lg-1 border-left-0 p-4"
+      "col-4 col-sm-3 col-md-2 col-lg-2 border-left-0"
     );
     var planDiv = $("<div>").addClass(
-      "col-4 col-sm-6 col-md-8 col-lg-10 border-0 text-dark pl-0"
+      "col-4 col-sm-6 col-md-8 col-lg-9 border-0 text-dark pl-0"
     );
     var savePlan = $("<div>").addClass(
       "col-4 col-sm-3 col-md-2 col-lg-1 saveBtn"
@@ -50,16 +50,22 @@ function displaySchedule() {
     timePlanDiv.append(timeScheduleDiv, planDiv, savePlan);
     container.append(timePlanDiv);
     //save the current time in hour and second format and compare with the schedule time
-    var currentTime = moment().format("LT");
-    var beginningTime = moment(currentTime, "h:mma");
-    planTime = planTime.text().trim();
-
-    var endTime = moment(planTime, "h:mma");
-    if (beginningTime.isBefore(endTime) && planTextP.text() !== " ") {
+    var currentTime = moment().format("hh:mmA");
+    var currentTimeFormat = moment(currentTime, "h:mma");
+    planTime = planTime.text();
+    var scheduleTime = moment(planTime, "h:mma");
+    //compare current time and schedule time to change the background color
+    if (currentTimeFormat.isBefore(scheduleTime) && planTextP.text() !== " ") {
       planDiv.addClass("future");
-    } else if (beginningTime.isAfter(endTime) && planTextP.text() !== " ") {
+    } else if (
+      currentTimeFormat.isAfter(scheduleTime) &&
+      planTextP.text() !== " "
+    ) {
       planDiv.addClass("past");
-    } else if (beginningTime.isSame(endTime) && planTextP.text() !== " ") {
+    } else if (
+      currentTimeFormat.isSame(scheduleTime) &&
+      planTextP.text() !== " "
+    ) {
       planDiv.addClass("present");
     }
     console.log();
