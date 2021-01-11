@@ -10,6 +10,9 @@ workTime = [
   "4:00PM",
   "5:00PM",
 ];
+//append current time to the paragraph
+currentDate = moment().format("dddd, MMMM Do");
+$("#currentDay").append(currentDate);
 //to refresh the webpage every hour to know the change
 setTimeout(function () {
   location.reload();
