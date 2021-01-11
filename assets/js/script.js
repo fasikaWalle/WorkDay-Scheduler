@@ -60,3 +60,11 @@ function displaySchedule() {
     }
   }
 }
+//clicking the paragraph then it will change to textarea
+$(".container").on("click", "p", function () {
+  console.log("this is paragraph");
+  var plan = $(this).text().trim();
+  var planTextArea = $("<textarea>").val(plan);
+  planTextArea.addClass("textarea");
+  $(this).replaceWith(planTextArea);
+});
