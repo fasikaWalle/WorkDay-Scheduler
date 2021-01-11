@@ -12,5 +12,9 @@ User have a schedule app which enables to save all necessary work plans and it w
 
 jQuery
 Bootstrap
+## URL of the project
+Github Repo:https://github.com/fasikaWalle/WorkDay-Scheduler
+Live site URL:https://fasikawalle.github.io/WorkDay-Scheduler/
 ## screenshot
 ![Work-Day-Scheduler](https://user-images.githubusercontent.com/73629983/104147698-012eaa00-5395-11eb-8d1d-e483963067a7.png)
+
