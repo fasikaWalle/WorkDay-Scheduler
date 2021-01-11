@@ -92,3 +92,10 @@ $(".container").on("click", ".saveBtn", function () {
   planTextP.addClass("planText");
   planTextP.replaceWith(planText);
 });
+//save plan to local storage
+function savePlan() {
+  localStorage.setItem("plans-to-do", JSON.stringify(workSchedule));
+}
+
+// display the schedule plan
+displaySchedule();
