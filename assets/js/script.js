@@ -6,9 +6,9 @@ workTime = [
   "12:00Am",
   "1:00PM",
   "2:00PM",
-  "3:00PM",
-  "4:00PM",
-  "5:00PM",
+  "10:34PM",
+  "10:38PM",
+  "10:39PM",
 ];
 //append current time to the paragraph
 currentDate = moment().format("dddd, MMMM Do");
@@ -53,23 +53,20 @@ function displaySchedule() {
     var currentTime = moment().format("LT");
     var beginningTime = moment(currentTime, "h:mma");
     planTime = planTime.text().trim();
-    console.log(planTime);
+
     var endTime = moment(planTime, "h:mma");
-    if (beginningTime.isBefore(endTime)) {
+    if (beginningTime.isBefore(endTime) && planTextP.text() !== " ") {
       planDiv.addClass("future");
-      console.log("future");
-    } else if (beginningTime.isAfter(endTime)) {
+    } else if (beginningTime.isAfter(endTime) && planTextP.text() !== " ") {
       planDiv.addClass("past");
-      console.log("past");
-    } else {
+    } else if (beginningTime.isSame(endTime) && planTextP.text() !== " ") {
       planDiv.addClass("present");
-      console.log("present");
     }
+    console.log();
   }
 }
 //clicking the paragraph then it will change to textarea
 $(".container").on("click", "p", function () {
-  console.log("this is paragraph");
   var plan = $(this).text().trim();
   var planTextArea = $("<textarea>").val(plan);
   planTextArea.addClass("textarea");
@@ -83,7 +80,6 @@ $(".container").on("click", ".saveBtn", function () {
   //finding the value of sibling div which contains the textarea
   var planText = $(this).prev("div").children().val();
 
-  console.log(planText);
   //check whether the schedule plan is paragraph or text area if it is paragraph then the plan text will be the value of it
   if (planText == "") {
     planText = $(this).prev("div").children().text().trim();

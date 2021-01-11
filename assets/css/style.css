@@ -5,6 +5,7 @@ body {
 }
 .container {
   margin-bottom: 10%;
+  border-bottom: 1px solid #555;
 }
 textarea {
   background: transparent;
