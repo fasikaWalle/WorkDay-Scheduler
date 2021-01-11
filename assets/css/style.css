@@ -80,3 +80,11 @@ textarea {
 .row div {
   border: 1px solid #555;
 }
+i {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.planText {
+  padding: 20px;
+}
