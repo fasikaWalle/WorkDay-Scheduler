@@ -68,3 +68,27 @@ $(".container").on("click", "p", function () {
   planTextArea.addClass("textarea");
   $(this).replaceWith(planTextArea);
 });
+//
+$(".container").on("click", ".saveBtn", function () {
+  //finding index of button parent
+  var index = $(this).parent().index();
+
+  //finding the value of sibling div which contains the textarea
+  var planText = $(this).prev("div").children().val();
+
+  console.log(planText);
+  //check whether the schedule plan is paragraph or text area if it is paragraph then the plan text will be the value of it
+  if (planText == "") {
+    planText = $(this).prev("div").children().text().trim();
+  }
+  if (planText == "") {
+    planText = " ";
+  }
+  var planTime = $(this).prev("div").prev("div").text().trim();
+  //updating the array using the parent index
+  workSchedule[index] = { plan: planText, time: planTime };
+  savePlan();
+  var planTextP = $("<p>").text(planText);
+  planTextP.addClass("planText");
+  planTextP.replaceWith(planText);
+});
