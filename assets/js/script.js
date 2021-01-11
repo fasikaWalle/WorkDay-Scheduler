@@ -10,6 +10,10 @@ workTime = [
   "4:00PM",
   "5:00PM",
 ];
+//to refresh the webpage every hour to know the change
+setTimeout(function () {
+  location.reload();
+}, 1000 * 60 * 60);
 //create schedule and append to the dom
 function displaySchedule() {
   for (var i = 0; i < workTime.length; i++) {
